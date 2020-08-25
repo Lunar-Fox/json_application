@@ -19,9 +19,6 @@ class Document extends Model
      */
     protected $fillable = [
         'id',
-        'meta',
-        'actions',
-        'actor',
         'payload',
     ];
 

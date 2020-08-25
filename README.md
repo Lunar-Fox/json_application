@@ -7,55 +7,27 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## Start project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p>1. Clone this repository</p>
+<p>2. Run "composer update" for install dependencies</p>
+<p>3. Run "cp .env.example .env"</p>
+<p>4. Configure database in .env or <a href="https://github.com/Lunar-Fox/json_application/blob/master/config/database.php">/config/database.php</a></p>
+<p>5. Run "php artisan migrate"</p>
+<p>You can use php development server for run this project "php artisan serve"</p>
+<br/>
+<p>For testing API you can use <a href="https://curl.haxx.se/">CURL</a> or <a href="https://www.postman.com/downloads/">Postman</a></p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Routes
+<p>POST /api/v1/document/ - create new document</p>
+<p>GET /api/v1/document/{id} - get specified document</p>
+<p>PATCH /api/v1/document/{id} - edit document</p>
+<p>POST /api/v1/document/{id}/publish - publish document</p>
+<p>GET /api/v1/document/?page=1&perPage=20 - get documents with pagination</p>
 
-## Learning Laravel
+## Main files
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<p><a href="https://github.com/Lunar-Fox/json_application/blob/master/app/Http/Controllers/DocumentsController.php">Documents Controller</a></p>
+<p><a href="https://github.com/Lunar-Fox/json_application/blob/master/app/Document.php">Documents Model</a></p>
+<p><a href="https://github.com/Lunar-Fox/json_application/blob/master/database/migrations/2020_08_25_142947_create_documents_table.php">Documents migration</a></p>

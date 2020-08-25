@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Validator;
 use App\Document;
 
 class DocumentsController extends Controller
@@ -19,12 +18,15 @@ class DocumentsController extends Controller
         $perPage = $request->validate([
             'perPage' => 'integer',
         ]);
+
         $paginate = Document::orderBy('created_at', 'desc')->paginate((isset($perPage['perPage']) ? $perPage['perPage'] : 20));
+
         $documents = [];
-        foreach($paginate as $document) {
+        foreach ($paginate as $document) {
             $document->payload = json_decode($document->payload, true);
             $documents[] = $document;
         }
+
         $result = [
             'document' => $documents,
             'pagination' => [
@@ -33,6 +35,7 @@ class DocumentsController extends Controller
                 'total' => $paginate->total(),
             ],
         ];
+
         return response($result)->withHeaders(['application/json']);
     }
 
@@ -48,7 +51,9 @@ class DocumentsController extends Controller
             'id' => Str::uuid(),
             'payload' => json_encode([]),
         ]);
+
         $document->payload = json_decode($document->payload, true);
+
         return response(['document' => $document])->withHeaders(['application/json']);
     }
 
@@ -61,6 +66,7 @@ class DocumentsController extends Controller
     public function show(Document $document)
     {
         $document->payload = json_decode($document->payload, true);
+
         return response(['document' => $document])->withHeaders(['application/json']);
     }
 
@@ -81,13 +87,16 @@ class DocumentsController extends Controller
                 return $item !== "" && $item !== null && (!is_array($item) || count($item) > 0);
             });
         }
+
         try {
             $data = json_decode($request->getContent(), true);
             if($document['status'] == 'draft' && isset($data['document']['payload'])) {
                 $payload = json_decode($document['payload'], true);
                 $mergedArray = array_merge($payload, $data['document']['payload']);
+
                 $document->fill(['payload' => filterNotNull($mergedArray)]);
                 $document->save();
+
                 return response(['document' => $document])->withHeaders(['application/json']);
             } else {
                 return response('', 400);
@@ -108,7 +117,9 @@ class DocumentsController extends Controller
         $document = Document::findOrFail($id);
         $document->status = 'published';
         $document->save();
+
         $document->payload = json_decode($document->payload, true);
+
         return response(['document' => $document])->withHeaders(['application/json']);
     }
 }
