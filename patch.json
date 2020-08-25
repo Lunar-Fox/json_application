@@ -1,0 +1,18 @@
+{
+    "document": {
+        "payload": {
+            "actor": "The fox",
+            "meta": {
+                "type": "quick",
+                "color": "brown"
+            },
+            "actions": [
+                {
+                    "action": "jump over",
+                    "actor": "lazy dog"
+                }
+            ]
+        }
+    }
+}
+   
